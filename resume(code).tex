@@ -1,106 +1,223 @@
-\documentclass[a4paper,10pt]{article}
-\usepackage[margin=0.6in]{geometry}
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{hyperref}
-\usepackage{parskip}
+\documentclass[10pt]{article}
+
+% --- OPTIMIZED PAGE GEOMETRY ---
+\usepackage[a4paper, top=0.5in, bottom=0.5in, left=0.65in, right=0.65in]{geometry}
+
+% --- CORE PACKAGES ---
 \usepackage{xcolor}
-\usepackage{fancyhdr}
-% \pagestyle{fancy}
-\fancyhf{}
-\rfoot{\thepage}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
 
-\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+% --- CLEAN PROFESSIONAL COLORS ---
+\definecolor{sectiongray}{RGB}{240,240,240}
 
-\hypersetup{
-    colorlinks=true,
-    urlcolor=blue,
+% --- FONT CONFIGURATION ---
+\renewcommand{\familydefault}{\sfdefault}
+
+% --- BALANCED SPACING ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.02}
+
+% --- CLEAN LIST FORMATTING ---
+\setlist[itemize]{
+    label=\textbullet, 
+    leftmargin=12pt, 
+    itemsep=1.0pt, 
+    topsep=0.5pt, 
+    parsep=0pt,
+    before={\vspace{0pt}},
+    after={\vspace{0.5pt}}
 }
 
+% --- TABLE SETTINGS ---
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{8pt}
+
+% --- CUSTOM COMMANDS ---
+
+
+\newcommand{\sectionheader}[1]{%
+  \vspace{6pt}%  % Space above section header
+  \noindent\colorbox{sectiongray}{%
+    \parbox[c][10pt]{\dimexpr\textwidth-2\fboxsep}{%
+      \vspace*{\fill}%
+      {\fontsize{10}{12}\selectfont\bfseries\MakeUppercase{#1}}%
+      \vspace*{\fill}%
+    }%
+  }%
+  \vspace{6pt}%  % Space below section header
+}
+
+% Clean Name Block
+\newcommand{\nameblock}[2]{%
+  \begin{center}
+    {\fontsize{25}{20}\selectfont\bfseries #1}
+  \end{center}
+  \vspace{-3pt}
+  \noindent
+  \begin{tabularx}{\textwidth}{@{}X@{}}
+    \centering{\fontsize{9}{10}\selectfont #2} \\
+  \end{tabularx}
+  \vspace{-12pt}
+}
+
+% Optimized Work Entry Format
+\newcommand{\workentry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
+    {\fontsize{10}{12}\selectfont\bfseries #1} \quad{\fontsize{8}{11}\selectfont\itshape #2} & {\fontsize{8.5}{11}\selectfont\itshape #3} \\
+  \end{tabularx}
+  \vspace{-9.5pt}
+  #4
+  \vspace{5pt}
+}
+
+% Optimized Project Entry Format with very tight title-to-bullet spacing
+\newcommand{\projectentry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
+    {\fontsize{10}{12}\selectfont\bfseries #1} \quad{\fontsize{8}{10}\selectfont #2} & {\fontsize{8.5}{11}\selectfont\itshape #4} \\
+  \end{tabularx}
+  \vspace{-9.5pt}
+  #3
+  \vspace{5pt}
+}
+
+\pagestyle{empty}
 \begin{document}
 
-\begin{center}
-    \textbf{\Huge Amol Tripathi} \\
-    \vspace{0.2em}
-    \textbf{8874955991} \quad | \quad 
-    \href{mailto:amoltripathi28@gmail.com}{amoltripathi28@gmail.com} \quad | \quad
-    \href{https://www.linkedin.com/in/amol-tri12/}{LinkedIn} \quad | \quad \href{https://github.com/amoltrip28}{GitHub}
-\end{center}
+% ===== HEADER =====
+\nameblock{Amol Tripathi}{%
+  \faPhone\ +91-8874955991 \quad
+  \faEnvelope\ \href{mailto:amoltripathi28@gmail.com}{amoltripathi28@gmail.com} \quad
+  \faLinkedin\ \href{https://www.linkedin.com/in/amol-tri12/}{amol-trip12} \quad
+  \faGithub\ \href{https://github.com/amoltrip28}{amoltrip28}
+}
 
-\section*{EDUCATION}
-\textbf{VIT Bhopal University, India} \hfill \textit{June 2022 – June 2026} \\
-B.Tech in Computer Science \hfill \textbf{CGPA:} 8.31/10
+% ===== EDUCATION =====
+\sectionheader{Education}
 
-\section*{TECHNICAL SKILLS}
-\textbf{Languages:} Python, C++, C, JavaScript \\
-\textbf{Machine Learning:} Supervised & Unsupervised Learning, Deep Learning, Neural Networks, SVM, NLP \\
-\textbf{Libraries:} NumPy, Pandas, PyTorch, OpenCV, Matplotlib, Seaborn \\
-\textbf{Web:} HTML5, CSS, JavaScript, PHP, Express, Node.js, MySQL, MongoDB, Bootstrap, APIs, Postman \\
-\textbf{Tools:} Jupyter, Git, VS Code, MongoDB Compass, MetaMask \\
-\textbf{Soft Skills:} Team Leadership, Communication, Project Management
+\begin{tabularx}{\textwidth}{@{} X c c X @{}}
+  \toprule
+  \textbf{Qualification} & \textbf{Score/CGPA} & \textbf{Year} & \textbf{Institution} \\
+  \midrule
+  B.Tech Computer Science \& Engineering & \textbf{8.34/10.0} & 2022--2026 & VIT Bhopal University, MP \\
+  \bottomrule
+\end{tabularx}
 
-\section*{WORK EXPERIENCE}
+% ===== INTERNSHIPS =====
+% \sectionheader{Internships}
 
-\textbf{Project Group Lead, VIT Bhopal} \hfill \textit{Sep 2023 – Feb 2025} \\
-\begin{itemize}[leftmargin=1em]
-    \item Led a team of 10 in developing an ML model that reduced misclassification by 15\%, optimized training time by 30\%, and improved data processing speed by 40\% using parallel computing techniques.
-    \item Developed and deployed a MERN stack-based web application for seamless data visualization and user interaction, improving accessibility and real-time project monitoring.
-\end{itemize}
+% \workentry{CrowdWisdom Trading}{Automation Intern}{March 2025 -- August 2025}{
+% \begin{itemize}
+%   \item Built 5+ AI agents for email classification (90\% accuracy), document extraction (85\% precision), and US stock performance analysis(LSTM models), reducing manual processing by 50\% via automated alerts
+%   \item  Orchestrated 20+ business workflows in n8n (CRM, invoices, AI-driven stock trades), slashing job runtime from 10mins to 2.5mins and human input by 60\%.
+%   \item  Containerized pipelines (Docker + Kubernetes) for zero-downtime deployment of n8n image, slashing onboarding and maintenance time by 40\% via standardized environments
+  
+% \end{itemize}
+% }
 
+% ===== PROFESSIONAL RECOGNITION =====
+% \sectionheader{Professional Recognition}
 
-\section*{PROJECTS}
-% \textbf{AI-Powered Sentiment Analysis and Tweet Fetching Engine} \hfill \textit{Jan 2025 – Feb 2025} \\
-% \textbf{Technologies:} Python, TextBlob, Tweepy, Twitter API v2, NLP \\
-% \begin{itemize}[leftmargin=1em]
-%     \item Processed 10K+ tweets using Twitter API for real-time sentiment analysis.
-%     \item Boosted classification accuracy by 10\% via data preprocessing and polarity scoring.
-%     \item Built CLI tool that improved analysis efficiency by 35\%.
+% \begin{itemize}
+%   \item \textbf Publication: Comparative Analysis of CNN and SVM for Alzheimer’s Prediction ,developed analytical models to generate
+%  insights on disease prediction, translating data into meaningful healthcare recommendations,
+%  DOI: 10.1007/978-3-031-89760-3 5
+  
 % \end{itemize}
 
-\textbf{Foodie Express} \href{https://github.com/amoltrip28/foodie-express}{(GitHub Repo)} \hfill \textit{Jan 2025 – Feb 2025} \\
-\textbf{Technologies:} PHP, MySQL, HTML, CSS 
-\begin{itemize}[leftmargin=1em]
-    \item Developed a hotel food ordering system with database integration and responsive UI, streamlining order tracking for admins and enhancing the guest dining experience.
-    \item Applied under-sampling and ensemble techniques to handle class imbalance, resulting in a 15\% improvement in system performance.
-\end{itemize}
+% ===== ACADEMIC PROJECTS =====
+\sectionheader{Academic Projects}
 
-\textbf{Student Information System (C++)} \href{https://github.com/amoltrip28/Student-Information-System}{(GitHub Repo)} \hfill \textit{May 2023 – June 2023} \\
-\textbf{Technologies:} C++, Object-Oriented Programming (OOP), File Handling 
-\begin{itemize}[leftmargin=1em]
-    \item Developed a console-based student management system in C++ to handle registration, authentication, and record management using modular class-based design.
-    \item Implemented file handling for persistent data storage and integrated user authentication with role-based access.
-\end{itemize}
-
-
-\textbf{Breast Cancer Detection Using SVM} \hfill \textit{Jan 2024} \\
-\textbf{Technologies:} Scikit-learn, Grid Search, Normalization 
-\begin{itemize}[leftmargin=1em]
-    \item Achieved 97\% accuracy using SVM with preprocessing and feature scaling on the Wisconsin dataset.
-    \item Boosted F1-score with grid search and cross-validation; reduced processing time by 25\%.
-\end{itemize}
-
-
-\section*{ACTIVITIES}
-
-\textbf{Club Participation, VIT Bhopal} \hfill \textit{} 
-\begin{itemize}[leftmargin=1em]
-    \item Attended various technical and non-technical club activities on campus.
-    \item Earned certificates of participation in workshops, coding events, and speaker sessions.
-\end{itemize}
-
-\textbf{Hackathon Enthusiast} \hfill \textit{} 
-\begin{itemize}[leftmargin=1em]
-    \item Participated in multiple college and national-level hackathons.
-    \item Collaborated with team members to design and prototype solutions under time constraints.
-\end{itemize}
-
-
-% \section*{CERTIFICATIONS}
-% \begin{itemize}[leftmargin=1em]
-%     \item Practice Predictive Analysis - FutureSkills Prime Virtual Lab
-%     \item Bits and Bytes of Computer Networking – Google (Coursera)
-%     \item Cloud Computing – NPTEL (IIT Kharagpur)
-%     \item Intro & Intermediate Machine Learning – Kaggle
+% \projectentry{ Eco-Vault }{ReactJs, Node, Clerk API, PostgreSQL, AWS}{
+% \begin{itemize}
+%   \item  Developed a marketplace where users buy/sell used goods, reducing e-waste by 30\% via AI-moderated listings.
+%   \item  Implemented real-time image processing using OpenCV, Integrated Google Gemini to analyze product images, auto rejecting 85\%+ of fraudulent listings.
+%   \item  Deployed scalable backend (AWS EC2, Docker) handling 100+ daily API calls with consistent under 1-second latency.
 % \end{itemize}
+% }{Jan 2025 -- Apr 2025}
+
+\projectentry{FoodieBot}{FastAPI, MySQL, Dialogflow, HTML, CSS, JavaScript}{
+\begin{itemize}
+  \item Built an AI-powered food ordering chatbot integrated into a restaurant website, handling 200+ test orders with under 2s response latency.
+  \item Engineered a FastAPI backend to process Dialogflow intents, automate order tracking, and reduce manual order handling effort by 60\%.
+  \item Designed a normalized MySQL schema with stored procedures for price calculation and order tracking, ensuring 100\% consistency in order data.
+  \item Deployed chatbot on the website, enabling 24/7 automated order management and improving customer interaction efficiency.
+\end{itemize}
+}{Apr 2025 -- Jun 2025}
+
+\projectentry{Resume Builder}{React, Node.js, MongoDB, HTML, CSS, JavaScript}{
+\begin{itemize}
+  \item Developed an interactive resume creation platform that guided 100+ users through a step-by-step process, reducing resume preparation time by 50\%.
+  \item Implemented dynamic resume template generation, enabling users to instantly create professional and customizable resumes in multiple formats (PDF/Word).
+  \item Designed a responsive and intuitive UI, improving user engagement and increasing successful resume exports by 40\%.
+\end{itemize}
+}{Apr 2025 -- Jun 2025}
+
+\projectentry{Student Information System}{C++, OOP, File Handling}{
+\begin{itemize}
+  \item Built a console-based student management system supporting registration, authentication, and academic record management for 50+ test users.
+  \item Applied Object-Oriented Programming (OOP) principles to design modular, reusable classes, improving code maintainability by 40\%.
+  \item Implemented file handling for persistent storage of student records, ensuring secure access and role-based authentication for administrators vs. students.
+\end{itemize}
+}{May 2023 -- Jun 2023}
+
+
+% \projectentry{Vocalis}{Next.js, TypeScript, Firebase, AWS, PostgreSQL}{
+% \begin{itemize}
+%   \item Built an AI-driven interview platform using VAPI.ai for realistic voice conversations and Gemini for response analysis, reducing recruiter screening time by 40%.
+%   \item Added real-time transcription (Whisper API) and sentiment scoring, generating candidate reports with 85\% accuracy vs manual reviews.Supports 100+ concurrent interviews with less than 10 seconds latency for AI feedback.
+%   \item  Detected biases (Gemini NLP), flagging 30\% fewer subjective terms than manual reviews
+% \end{itemize}
+% }{Aug 2024 -- Dec 2024}
+
+
+% ===== ACADEMIC ACHIEVEMENTS AND AWARDS =====
+\sectionheader{Academic Achievements and Awards}
+
+\begin{itemize}
+  \item Top 5 finalist out of 150+ teams in a college-level hackathon, solving real-world issues in 24 hours.
+  \item Oracle Certified AI Foundations Associate - Recognized for expertise in AI foundations
+  \item  Solved 300+ DSA problems (LeetCode, GFG,)
+\end{itemize}
+
+% ===== POSITIONS OF RESPONSIBILITY =====
+% \sectionheader{Positions of Responsibility}
+
+% \begin{itemize}
+%   \item \textbf{Research Team Lead:}  Alzheimer’s Prediction Project– Led CNN/SVM model development.
+%   \item \textbf{UI/UX Team Lead:} Open Source Club (VIT Bhopal)– Guided UI/UX for 5+ projects.
+% \end{itemize}
+
+\sectionheader{Positions of Responsibility}
+
+\begin{itemize}
+  \item \textbf{Project Team Lead:} Garbage Detection Model – Led a team to develop a YOLO-based computer vision model for roadside garbage detection, improving waste classification accuracy and enabling automated monitoring.
+  \item \textbf{Core Committee Member:} In college fests, managed logistics for 1000+ attendees
+\end{itemize}
+
+
+% ===== TECHNICAL SKILLS =====
+\sectionheader{Technical Skills}
+
+\begin{tabularx}{\textwidth}{@{} p{0.18\textwidth} p{0.3\textwidth} p{0.16\textwidth} X @{}}
+  \textbf{Languages:} & C++, Python & \textbf{Frontend:} & React.js, Next.js, TailwindCSS \\[1.5pt]
+  \textbf{Backend:} & Node.js, Express, REST APIs & \textbf{Databases:} & MySQL, MongoDB, Redis \\[1.5pt]
+  \textbf{Cloud/DevOps:} & AWS (EC2, S3, RDS), Docker & \textbf{Tools:} & Git, DialogFlow \\
+\end{tabularx}
+
+% ===== OTHER INFORMATION =====
+\sectionheader{Other Information}
+
+\begin{itemize}
+  \item \textbf{Languages:} Hindi (Native), English (Fluent)
+  \item \textbf{Interests:} System Design, Competitive Programming, Financial Markets, Innovation
+\end{itemize}
 
 \end{document}
